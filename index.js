@@ -22,9 +22,13 @@ const httpServer = createServer(app1);
 
 
 app.use(cors({
-  origin : "https://studend-app-backend-production.up.railway.app/"
+  origin : "https://studend-app-backend-production.up.railway.app"
 }))
   
+app.use(cors({
+  origin: 'http://yourapp.com'
+}));
+
 app.use(express.json()) // to send data to db
 app.use(cookieParser())
 
