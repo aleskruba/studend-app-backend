@@ -23,7 +23,7 @@ const httpServer = createServer(app1);
 
 
 
-
+app.use(cors())
 app.use(express.json()) // to send data to db
 app.use(cookieParser())
 
