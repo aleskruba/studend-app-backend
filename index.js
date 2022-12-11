@@ -22,7 +22,7 @@ const httpServer = createServer(app1);
 
 
 app.use(cors({
-  origin : "https://studend-app-backend-production.up.railway.app"
+  origin : "https://student-app-frontend.onrender.com/"
 }))
   
 app.use(cors({
