@@ -72,6 +72,6 @@ app.use("/api/teacher", teacherRoutes)
 app.listen(PORT,()=>{
     console.log('Connected on port 8800')
 })
-httpServer.listen(PORT,()=>{
-  console.log('Connected on port 8801')
-})
+// httpServer.listen(PORT,()=>{
+//  console.log('Connected on port 8801')
+// })
