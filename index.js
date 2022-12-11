@@ -21,13 +21,7 @@ const app1 = express()
 const httpServer = createServer(app1);
 
 
-app.use(cors({
-  origin : "https://student-app-frontend.onrender.com"
-}))
-  
-app.use(cors({
-  origin: 'http://yourapp.com'
-}));
+app.use(cors({ origin: true }));
 
 app.use(express.json()) // to send data to db
 app.use(cookieParser())
