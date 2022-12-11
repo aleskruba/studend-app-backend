@@ -26,18 +26,7 @@ const httpServer = createServer(app1);
 app.use(express.json()) // to send data to db
 app.use(cookieParser())
 
-const whitelist = ['https://studend-app-backend-production.up.railway.app/'];
-const corsOptions = {
-  credentials: true, // This is important.
-  origin: (origin, callback) => {
-    if(whitelist.includes(origin))
-      return callback(null, true)
 
-      callback(new Error('Not allowed by CORS'));
-  }
-}
-
-app.use(cors(corsOptions));
 
 
 const storage = multer.diskStorage({
