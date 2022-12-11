@@ -15,10 +15,16 @@ import {PORT,PORT1} from './config.js'
 
 export const app = express()
 
-const app1 = express()
-
-
-const httpServer = createServer(app1);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", req.header('Origin'));
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
 
 
 app.use(cors({ origin: true }));
