@@ -22,22 +22,7 @@ const httpServer = createServer(app1);
 
 
 
-const io = new Server(httpServer, {
-  cors:{
-    origin:"*"
-  }
-})
 
-io.on("connection", (socket) => {
- console.log('we are connected with on socket')
- socket.on("chat",chat=>{
-  io.emit('chat',chat)
- })
-
- socket.on('diconnet',()=> console.log('disconnected'))
-});
-
-app1.use(cors())
 
 app.use(express.json()) // to send data to db
 app.use(cookieParser())
@@ -72,6 +57,4 @@ app.use("/api/teacher", teacherRoutes)
 app.listen(PORT,()=>{
     console.log('Connected on port 8800')
 })
-// httpServer.listen(PORT,()=>{
-//  console.log('Connected on port 8801')
-// })
+
