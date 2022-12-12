@@ -2,7 +2,7 @@ import  {db } from "../db.js"
 import bcrypt from "bcrypt";  
 import jwt from 'jsonwebtoken';
 
-const x = 5
+
 
 
 export const register = (req, res) => {
@@ -52,14 +52,14 @@ export const register = (req, res) => {
   
       if (!isPasswordCorrect)
         return res.status(400).json("Wrong username or password!");
-        const token = jwt.sign({ id: data[0].id, admin: data[0].admin}, "jwtkey");
-        const { password, ...other } = data[0];
-        
-        res.cookie("access_token", token, {
-          httpOnly: true,
-        })
-        .status(200)
-        .json(other);
+       const token = jwt.sign({ id: data[0].id, admin: data[0].admin}, "jwtkey");
+       const { password, ...other } = data[0];
+      
+       res.cookie("access_token", token, {
+         httpOnly: true,
+       })
+       .status(200)
+       .json(other);
     });
   };
 
@@ -77,30 +77,29 @@ export const register = (req, res) => {
       
    
   
-        const token = req.cookies.access_token;
-         if (!token) return res.status(401).json("Not authenticated!");
-      
-        jwt.verify(token, "jwtkey", (err, userInfo) => {
-          if (err) return res.status(403).json("Token is not valid!");
+    //   const token = req.cookies.access_token;
+    //   if (!token) return res.status(401).json("Not authenticated!");
+    //         jwt.verify(token, "jwtkey", (err, userInfo) => {
+    //     if (err) return res.status(403).json("Token is not valid!");
     
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const userId = req.params.id; 
-        if (userId != userInfo.id)  res.status(400).json(`Do not try this frauds bro !!! otherwise you're gonna be expelled, YOUR IP ADRESS IS :  ${req.socket.localAddress}`)
+      //  if (userId != userInfo.id)  res.status(400).json(`Do not try this frauds bro !!! otherwise you're gonna be expelled, YOUR IP ADRESS IS :  ${req.socket.localAddress}`)
 
         const q =
           "UPDATE users SET `username`=?,`email`=?, `password`=?,  `img`=?, `admin`=? WHERE `id` = ? ";
 
         const values = [req.body.username, req.body.email, hash, req.body.img, req.body.isadmin];
     
-          db.query(q, [...values,userInfo.id], (err, data) => {
+          db.query(q, [...values,userId], (err, data) => {
           if (err) return res.status(500).json(err);
           return res.status(200).json("User has been updated.");
         });
          
         })
-      });
+    //  });
       
     };
 
@@ -150,6 +149,10 @@ export const deleteUser = (req, res) => {
 };
 
 
+
+ 
+
+ 
 
  
 
