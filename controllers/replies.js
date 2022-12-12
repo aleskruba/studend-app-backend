@@ -16,12 +16,12 @@ export const getReplies = (req,res) => {
 
 export const addReply = (req,res)=>{
 
-  const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated!");
-
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
-
+// const token = req.cookies.access_token;
+// if (!token) return res.status(401).json("Not authenticated!");
+//
+// jwt.verify(token, "jwtkey", (err, userInfo) => {
+//   if (err) return res.status(403).json("Token is not valid!");
+//
     const q = "INSERT INTO replies (`reply`, `date`,`uidcomment`,`uiduser`,`uidcommentauthor`) VALUES (?)"
     const values = [
         req.body.comment,
@@ -37,7 +37,7 @@ export const addReply = (req,res)=>{
       return res.json("Reply has been created")
     })
 
-   });
+  // });
   }
 
 
@@ -53,3 +53,4 @@ export const deleteReply = (req, res) => {
         return res.json("Reply has been deleted!");
       });
  };
+
