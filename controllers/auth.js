@@ -77,11 +77,11 @@ export const register = (req, res) => {
       
    
   
-       // const token = req.cookies.access_token;
-        // if (!token) return res.status(401).json("Not authenticated!");
+        const token = req.cookies.access_token;
+         if (!token) return res.status(401).json("Not authenticated!");
       
-    //    jwt.verify(token, "jwtkey", (err, userInfo) => {
-    //      if (err) return res.status(403).json("Token is not valid!");
+        jwt.verify(token, "jwtkey", (err, userInfo) => {
+          if (err) return res.status(403).json("Token is not valid!");
     
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
@@ -97,7 +97,7 @@ export const register = (req, res) => {
           db.query(q, [...values,userInfo.id], (err, data) => {
           if (err) return res.status(500).json(err);
           return res.status(200).json("User has been updated.");
-  //      });
+        });
          
         })
       });
