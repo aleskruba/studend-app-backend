@@ -24,7 +24,7 @@ app.use(
         credentials: true,
         origin: function (origin callback) {
             switch (origin) {
-                case "https://render.com":
+                case "https://student-app-frontend.onrender.com/":
         
                     callback(null, true); // allow these domains
                     break;
