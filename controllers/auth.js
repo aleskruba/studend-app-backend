@@ -2,7 +2,7 @@ import  {db } from "../db.js"
 import bcrypt from "bcrypt";  
 import jwt from 'jsonwebtoken';
 
-
+const x = 5
 
 
 export const register = (req, res) => {
