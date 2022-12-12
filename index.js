@@ -30,8 +30,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(cors({ origin: true }));;
-
+app.use(cors({ origin: true }));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
