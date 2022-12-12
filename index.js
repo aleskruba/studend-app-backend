@@ -20,7 +20,7 @@ app.use(express.json()) // to send data to db
 app.use(cookieParser())
 
  app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", ''https://*.onrender.com' ');
+  res.header("Access-Control-Allow-Origin", req.header('Origin'));
   res.header("Access-Control-Allow-Credentials", true);
   res.header(
     "Access-Control-Allow-Headers",
@@ -31,7 +31,7 @@ app.use(cookieParser())
  });
 
 app.use(cors({ 
-    origin: 'https://*.onrender.com' }));
+    origin: '*' }));
 
 
 const storage = multer.diskStorage({
