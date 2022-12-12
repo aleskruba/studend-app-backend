@@ -31,7 +31,7 @@ app.use(cookieParser())
 // });
 
 app.use(cors({ 
-    origin: 'https://student-app-frontend.onrender.com' }));
+    origin: 'https://render.com' }));
 
 
 const storage = multer.diskStorage({
