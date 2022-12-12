@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import {db} from "../db.js" 
 
+const x = 5
 
 export const getComments = (req,res) => {
     const q =   "SELECT c.id, `username`, `title`, `comment`, `img`, `date` FROM users u JOIN comments c ON u.id = c.uid ";
