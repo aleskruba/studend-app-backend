@@ -31,7 +31,7 @@ app.use(cookieParser())
  });
 
 app.use(cors({ 
-    origin: '*' }));
+    origin }));
 
 
 const storage = multer.diskStorage({
