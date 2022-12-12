@@ -26,6 +26,7 @@ app.use(
             switch (origin) {
                 case "https://onrender.com":
                 case "https://student-app-frontend.onrender.com":
+                case "https://render.com":
                     callback(null, true); // allow these domains
                     break;
                 default:
